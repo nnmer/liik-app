@@ -25,7 +25,8 @@
     "openai": "^4.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tauri-plugin-positioner-api": "^0.2.7"
+    "tauri-plugin-log-api": "github:tauri-apps/tauri-plugin-log#v1",
+    "tauri-plugin-window-state-api": "github:tauri-apps/tauri-plugin-window-state#v1"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^1.5.0",
