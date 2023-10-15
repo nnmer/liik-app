@@ -5,7 +5,11 @@
 #[tauri::command]
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet])
+        .plugin(tauri_plugin_positioner::init())
+        // This is required to get tray-relative positions to work
+        // .on_system_tray_event(|app, event| {
+        //     tauri_plugin_positioner::on_tray_event(app, &event);
+        // })
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
