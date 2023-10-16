@@ -9,8 +9,7 @@
   ],
   "private": true,
   "version": "0.1.0",
-  "type": "module",
-  "hoempage": "https://github.com/nnmer/sadbird-app",
+  "homepage": "https://github.com/nnmer/sadbird-app",
   "license": "GPL",
   "author": "Anton Romanov <anton.v.romanov@gmail.com>",
   "scripts": {
@@ -20,6 +19,8 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@mantine/core": "^7.1.3",
+    "@mantine/hooks": "^7.1.3",
     "@tauri-apps/api": "^1.5.0",
     "axios": "^1.5.1",
     "openai": "^4.12.1",
@@ -33,6 +34,8 @@
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
+    "postcss-preset-mantine": "^1.9.0",
+    "postcss-simple-vars": "^7.0.1",
     "typescript": "^5.0.2",
     "vite": "^4.4.4"
   }
