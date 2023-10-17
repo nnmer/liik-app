@@ -1,5 +1,5 @@
 import {Card, Text, Button, Center, Title, TextInput, Space} from '@mantine/core'
-import Config from '../../modules/Config'
+import {Config} from '../../modules/Config'
 import { useRef } from 'react'
 
 export default function Setup() {
@@ -7,9 +7,7 @@ export default function Setup() {
     const accessKey = useRef()
 
     const submit = async (value: string|null) => {
-        console.warn(value)
-        await Config.updateKey(Config.ref.apps.OpenAIDirect.accessKey, value)
-        
+        return await Config.updateKey(Config.ref.apps.OpenAIDirect.accessKey, value)
     }
 
     return (
