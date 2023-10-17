@@ -1,11 +1,6 @@
 import {Config} from "../../modules/Config";
+import Chat from "./Chat";
 import Setup from "./Setup";
-
-function App () {
-    return (
-        <>THe chat window</>
-    )
-}
 
 export default function DirectOpenAI() {
     return (
@@ -13,7 +8,7 @@ export default function DirectOpenAI() {
             {
                 Boolean(Config.get().apps.OpenAIDirect.enabled)
                 && Config.get().apps.OpenAIDirect.accessKey?.length > 0
-                ? <App/>
+                ? <Chat/>
                 : <Setup />
             }
             

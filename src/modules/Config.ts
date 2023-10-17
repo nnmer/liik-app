@@ -100,6 +100,6 @@ class SysConfig {
 export const Config = new SysConfig()
 
 
-const ConfigContext = createContext(null)
+const ConfigContext = createContext(Config.get())
 
 export default ConfigContext;

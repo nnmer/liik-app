@@ -18,13 +18,15 @@ export default function Setup() {
             <Text>It will be used to communicate with OpenAI service and execute your requests.</Text>
             <Space h="xl" />
             <TextInput 
-                placeholder='OpenAI access key'      
-                ref={accessKey}          
+                placeholder='OpenAI access key'
+                // @ts-ignore
+                ref={accessKey}           
             />
             <Button variant="light" color="blue" fullWidth mt="md" radius="md"
                 onClick={(event)=>{
                     event.preventDefault()
-                    return submit(accessKey.current.value)
+                    // @ts-ignore:
+                    return submit(accessKey.current?.value)
                 }}
             >
                 Save & Go
