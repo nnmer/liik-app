@@ -1,10 +1,10 @@
 [package]
-name = "sadbird-app"
+name = "liik-app"
 version = "0.0.0"
-description = "A SadBird App. A satilite app for your desktop to access LLM and their features"
+description = "A liik App. A satilite app for your desktop to access LLM and their features"
 authors = ["Anton Romanov <anton.v.romanov@gmail.com>"]
 license = "GPL"
-repository = "https://github.com/nnmer/sadbird-app"
+repository = "https://github.com/nnmer/liik-app"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
