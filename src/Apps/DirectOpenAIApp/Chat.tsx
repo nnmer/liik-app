@@ -11,6 +11,7 @@ import FormTextInput from "../../components/form/FormTextInput";
 import Field from "../../components/form/Field";
 import validationConstraints from "../../components/form/validationConstraints";
 import { useScrollIntoView } from '@mantine/hooks';
+import logo from '../../assets/logo.svg'
 
 export default function Chat() {
 
@@ -87,7 +88,7 @@ export default function Chat() {
                             <Grid>
                                 {rec.role == 'assistant' &&
                                     <Grid.Col span={"1"}>
-                                        <Avatar color="blue" radius="xl">{rec.role[0].toUpperCase()}</Avatar>
+                                        <Avatar src={logo} radius="xl">{rec.role[0].toUpperCase()}</Avatar>
                                     </Grid.Col>
                                 }
                                 <Grid.Col span="auto">
