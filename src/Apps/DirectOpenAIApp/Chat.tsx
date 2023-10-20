@@ -1,19 +1,16 @@
-import React from 'react'
 import OpenAI from "openai";
 import { useContext, useState } from "react";
 import ConfigContext, { ConfigData } from "../../modules/Config";
-import { Alert, Avatar,Box,Button, Center, Container, Divider, Grid, ScrollArea, Title } from "@mantine/core";
-import Markdown from "react-markdown";
-import remarkUnwrapImages from "remark-unwrap-images";
-import chatStyles from './Chat.module.css'
+import { ActionIcon, Button, Container, Divider, Grid, Title, Tooltip } from "@mantine/core";
 import { Form } from "react-final-form";
 import FormTextInput from "../../components/form/FormTextInput";
 import Field from "../../components/form/Field";
 import validationConstraints from "../../components/form/validationConstraints";
 import { useScrollIntoView } from '@mantine/hooks';
-import logo from '../../assets/logo.svg'
 import { HistoryMessage } from './HistoryMessage';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
+import ChatHistory from "./ChatHistory";
+import { IconRefreshAlert } from '@tabler/icons-react';
 
 export default function Chat() {
 
@@ -85,66 +82,31 @@ export default function Chat() {
 
     return (
         <>
-            <Container m={'sm'}>
-                <Title order={4}>Chat started</Title>
-                <small>{currentHistory[0].time.toLocaleString()}</small>
-                <Divider variant="dashed" />
+            <Container mt={"md"} mb={"md"}>
+                <Grid>
+                    <Grid.Col span="auto">
+                        <Title order={4}>Chat started</Title>
+                        <small>{currentHistory[0].time.toString()}</small>
+
+                    </Grid.Col>
+                    <Grid.Col span="2" ta={"right"}>
+                        <Tooltip withArrow label="Start over (reset chat)">
+                            <ActionIcon variant="filled" aria-label="Settings" onClick={()=>{
+                                setCurrentHistory([new HistoryMessage(defaultSystemPromt)])
+                            }}>
+                                <IconRefreshAlert style={{ width: '70%', height: '70%' }} stroke={1.5} />
+                            </ActionIcon>
+                        </Tooltip>
+                    </Grid.Col>
+                </Grid>
+                <Divider variant="dashed"/>
             </Container>
-            <ScrollArea type="always"
-                style={{ paddingBottom: "100px" }}
-            >
-                {currentHistory.map((rec: HistoryMessage, idx) => {
-                    if (rec.message?.role == 'system') return <React.Fragment key={-1}></React.Fragment>
-                    if (rec.error) {
-                        return (
-                            <Container>
-                                <Center p={"sm"}>
-                                    <Alert color="red" icon={false} title={rec.error.toString()}
-                                        styles={{
-                                            title: {
-                                                marginBottom: 0,
-                                            }
-                                        }}
-                                    />
-                                </Center>
-                            </Container>
-                        )                        
-                    }
-                    
-                    return (
-                        <Container 
-                            key={idx} 
-                            p="md"
-                            style={{
-                                backgroundColor: rec.message?.role == 'assistant' ? `var(--mantine-color-default)` : `var(--mantine-color-default-hover)`
-                            }}
-                            ref={currentHistory.length == idx+1 ? targetRef : undefined}
-                        >
-                            
-                            <Grid>
-                                {rec.message?.role == 'assistant' &&
-                                    <Grid.Col span={"1"}>
-                                        <Avatar src={logo} radius="xl">{rec.message?.role[0].toUpperCase()}</Avatar>
-                                    </Grid.Col>
-                                }
-                                <Grid.Col span="auto" className={chatStyles['chat-record-item']}>
-                                    <Markdown
-                                        remarkPlugins={[
-                                            remarkUnwrapImages
-                                        ]}
-                                    // skipHtml
-                                    >{rec.message?.content}</Markdown>
-                                </Grid.Col>
-                                {rec.message?.role != 'assistant' &&
-                                    <Grid.Col span={"1"}>
-                                        <Avatar color="blue" radius="xl">{rec.message?.role[0].toUpperCase()}</Avatar>
-                                    </Grid.Col>
-                                }
-                            </Grid>
-                        </Container>
-                    )
-                })}
-            </ScrollArea>
+            
+            <ChatHistory
+                currentHistory={currentHistory} 
+                recordRef={targetRef}
+            />
+
             <Container p="sm" style={{
                 position: "fixed",
                 bottom: "0",
