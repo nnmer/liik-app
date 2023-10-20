@@ -1,5 +1,9 @@
-.chat-record-item {
+.chat-record-item {    
     img {
         width: 100%;
+    }
+    p {
+        margin: 0;
+        margin-bottom: 1em;
     }
 }
