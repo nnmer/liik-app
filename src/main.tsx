@@ -7,11 +7,16 @@ import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';
 import theme from "./theme.ts";
 
+import { Config } from "./modules/Config";
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <MantineProvider theme={theme} defaultColorScheme="dark">
-      <App />
-    </MantineProvider>
-  </React.StrictMode>,
-);
+Config.init()
+.then(()=>{
+  ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+    <React.StrictMode>
+      <MantineProvider theme={theme} defaultColorScheme="dark">
+        <App />
+      </MantineProvider>
+    </React.StrictMode>,
+  );
+})
+

@@ -2,8 +2,6 @@ import { useState } from "react";
 import DirectOpenAIApp from "./Apps/DirectOpenAIApp";
 import ConfigContext, { Config } from "./modules/Config";
 
-await Config.init()
-
 function App() {
   const [config, setConfig] = useState(Config.get())
   Config.setUpdateCallback(setConfig)
