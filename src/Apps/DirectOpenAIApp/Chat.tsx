@@ -11,6 +11,7 @@ import { HistoryMessage } from './HistoryMessage';
 import { ChatCompletionMessageParam } from 'openai/resources/index.mjs';
 import ChatHistory from "./ChatHistory";
 import { IconRefreshAlert } from '@tabler/icons-react';
+import { FormApi } from "final-form";
 
 export default function Chat() {
 
@@ -19,8 +20,9 @@ export default function Chat() {
         apiKey: config.apps.OpenAIDirect.accessKey,
         dangerouslyAllowBrowser: true
     })
+    const initialValues: Partial<Record<string, any>> = { request: '' }
 
-    const defaultSystemPromt = {       
+    const defaultSystemPromt: ChatCompletionMessageParam = {       
         "role": 'system', 
         "content": `
             You are an assistant to help answer question, search, process, summarize information.
@@ -34,13 +36,14 @@ export default function Chat() {
     const [pendingResponse, setPendingResponse] = useState(false)
     const [currentHistory, setCurrentHistory] = useState<Array<HistoryMessage>>([new HistoryMessage(defaultSystemPromt)])
 
-    async function onSubmit(values, form) {
+    async function onSubmit(values: Record<string, any>, form: FormApi) {
         setPendingResponse(true)
         try {
             const response = await generate(values.request)
             console.info(response)        
         } catch (err) {
         } finally {
+            // @ts-ignore
             form.reset('request')
             scrollIntoView()
             setPendingResponse(false)
@@ -73,7 +76,7 @@ export default function Chat() {
             setCurrentHistory(messages)
 
             return response
-        } catch (err) {
+        } catch (err: any) {
             setCurrentHistory(messages.concat([
                 new HistoryMessage(null, err)
             ]))
@@ -89,7 +92,7 @@ export default function Chat() {
                         <small>{currentHistory[0].time.toString()}</small>
 
                     </Grid.Col>
-                    <Grid.Col span="2" ta={"right"}>
+                    <Grid.Col span={2} ta={"right"}>
                         <Tooltip withArrow label="Start over (reset chat)">
                             <ActionIcon variant="filled" aria-label="Settings" onClick={()=>{
                                 setCurrentHistory([new HistoryMessage(defaultSystemPromt)])
@@ -118,7 +121,7 @@ export default function Chat() {
             }}>
                 <Form
                     onSubmit={onSubmit}
-                    initialValues={{ request: '' }}
+                    initialValues={initialValues}
                     render={({ handleSubmit }) => (
                         <form onSubmit={handleSubmit}>
                             <Grid>
@@ -134,7 +137,7 @@ export default function Chat() {
                                     />
 
                                 </Grid.Col>
-                                <Grid.Col span="2">
+                                <Grid.Col span={2}>
                                     <Button w="100%"
                                         type="submit"
                                         loading={pendingResponse}

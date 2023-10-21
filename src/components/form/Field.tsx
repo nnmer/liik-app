@@ -10,4 +10,4 @@ const identity = (value:any) => (value);
  * See https://github.com/final-form/react-final-form/issues/130
  */
 
-export default (props:object): React.ReactElement => <Field parse={identity} {...props} />
+export default (props:any): React.ReactElement => <Field parse={identity} {...props} />

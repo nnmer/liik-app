@@ -10,6 +10,7 @@ const validationConstraints = {
     }
 }
 
+// @ts-ignore
 export const composeValidators = (...validators) => (value:any) =>
     validators.reduce((error, validator) => error || validator(value), undefined)
 

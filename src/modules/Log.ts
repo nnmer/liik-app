@@ -1,7 +1,8 @@
 import { debug, warn, trace, info, error, attachConsole } from "tauri-plugin-log-api";
 
 // with LogTarget::Webview enabled this function will print logs to the browser console
-const detach = await attachConsole();
+// const detach = await attachConsole();
+await attachConsole();
 
 // detach the browser console from the log stream
 // detach();

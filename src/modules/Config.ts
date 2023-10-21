@@ -1,5 +1,5 @@
-import { fs, path } from '@tauri-apps/api'
-import { BaseDirectory, appConfigDir } from '@tauri-apps/api/path'
+import { fs } from '@tauri-apps/api'
+import { BaseDirectory } from '@tauri-apps/api/path'
 import { flatten, unflatten } from 'flat';
 import * as _obj from 'lodash'
 import { createContext } from 'react';
@@ -30,8 +30,10 @@ export interface ConfigData {
 
 class SysConfig {
     #data: ConfigData
+    // @ts-ignore
     #updateCallback: (value: object) => void
-    ref: ConfigData  // this is a reference to the key in it's flatten prensentation
+    // @ts-ignore
+    ref: Partial<Record<string, any>>  // this is a reference to the key in it's flatten prensentation
 
     constructor() {
         this.#data = {
@@ -46,7 +48,7 @@ class SysConfig {
         
         this.#buildKeyReference()
     }
-
+    
     #buildKeyReference() {
         this.ref = flatten(this.#data)
         Object.keys(this.ref).forEach(key=>this.ref[key]=key)
@@ -78,7 +80,7 @@ class SysConfig {
         return {...this.#data}
     }
 
-    setUpdateCallback(callback: (value: object) => void ) {
+    setUpdateCallback(callback: (value: any) => void ) {
         this.#updateCallback = callback
     }
 

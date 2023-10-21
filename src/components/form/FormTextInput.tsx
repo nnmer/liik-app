@@ -1,6 +1,6 @@
 import { TextInput } from "@mantine/core"
 
-const FormTextInput = (props:object) => {
+const FormTextInput = (props:any) => {
     
     const {
         disabled,

@@ -44,12 +44,12 @@ export default function ChatHistory({
                         style={{
                             backgroundColor: rec.message?.role == 'assistant' ? `var(--mantine-color-default)` : `var(--mantine-color-default-hover)`
                         }}
-                        ref={currentHistory.length == idx + 1 ? recordRef : undefined}
+                        ref={currentHistory.length == idx + 1 ? recordRef as  React.RefObject<HTMLDivElement> : undefined}
                     >
 
                         <Grid>
                             {rec.message?.role == 'assistant' &&
-                                <Grid.Col span={"1"}>
+                                <Grid.Col span={1}>
                                     <Avatar src={logo} radius="xl">{rec.message?.role[0].toUpperCase()}</Avatar>
                                 </Grid.Col>
                             }
@@ -62,7 +62,7 @@ export default function ChatHistory({
                                 >{rec.message?.content}</Markdown>
                             </Grid.Col>
                             {rec.message?.role != 'assistant' &&
-                                <Grid.Col span={"1"}>
+                                <Grid.Col span={1}>
                                     <Avatar color="blue" radius="xl">{rec.message?.role[0].toUpperCase()}</Avatar>
                                 </Grid.Col>
                             }
