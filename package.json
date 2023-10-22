@@ -10,7 +10,7 @@
   "private": true,
   "version": "0.1.0",
   "homepage": "https://github.com/nnmer/liik-app",
-  "license": "GPL",
+  "license": "AGPL-3.0",
   "author": "Anton Romanov <anton.v.romanov@gmail.com>",
   "scripts": {
     "dev": "vite",

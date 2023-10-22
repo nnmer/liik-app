@@ -5,4 +5,4 @@
 - chat
 
 
-![image](./doc/assets/app-screenshot.jpg)
+![image](./doc/assets/app-screenshot.png)
