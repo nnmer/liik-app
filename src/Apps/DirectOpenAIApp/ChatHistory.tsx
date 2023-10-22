@@ -2,7 +2,7 @@ import React from 'react'
 import Markdown from "react-markdown";
 import remarkUnwrapImages from "remark-unwrap-images";
 import chatStyles from './Chat.module.css'
-import logo from '../../assets/logo.svg'
+import openAILogo from '../../assets/ChatGPT-Logo.png'
 import { Alert, Avatar, Center, Container, Grid, ScrollArea } from "@mantine/core";
 import { HistoryMessage } from './HistoryMessage';
 
@@ -50,7 +50,7 @@ export default function ChatHistory({
                         <Grid>
                             {rec.message?.role == 'assistant' &&
                                 <Grid.Col span={1}>
-                                    <Avatar src={logo} radius="xl">{rec.message?.role[0].toUpperCase()}</Avatar>
+                                    <Avatar src={openAILogo} radius="xl">{rec.message?.role[0].toUpperCase()}</Avatar>
                                 </Grid.Col>
                             }
                             <Grid.Col span="auto" className={chatStyles['chat-record-item']}>
