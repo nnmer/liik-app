@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "liik-app",
+    "productName": "Liik",
     "version": "0.1.0"
   },
   "tauri": {
@@ -57,7 +57,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "liik",
+        "title": "Liik",
         "minWidth": 800,
         "minHeight": 600,
         "center": true
