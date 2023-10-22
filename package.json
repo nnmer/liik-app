@@ -8,7 +8,7 @@
     "chat"
   ],
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/nnmer/liik-app",
   "license": "AGPL-3.0",
   "author": "Anton Romanov <anton.v.romanov@gmail.com>",
