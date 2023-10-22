@@ -62,6 +62,14 @@
         "minHeight": 600,
         "center": true
       }
-    ]
+    ],
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://gist.githubusercontent.com/nnmer/85577f5509fee775a5a3a0ac8b2ce42b/raw/0576ef2df21e1a690fc6d87badd2732ade30f463/liik-app-updater.json"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEI2RjYyNEM4NkFGMzE0MQpSV1JCTWErR1RHSnZDLzZuWE5HOFVyQW12ajZxN1ZCNjZLMzlxdWM2cG51QU1OclJRZnBHbEFndwo="
+    }
   }
 }
