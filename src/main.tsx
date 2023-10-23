@@ -15,7 +15,8 @@ import theme from "./theme.ts";
 import { Config } from "./modules/Config";
 import * as Sentry from '@sentry/react'
 
-if (import.meta.env.PROD) {
+console.warn('is prod?',import.meta.env.PROD)
+// if (import.meta.env.PROD) {
   Sentry.init({
     dsn: import.meta.env.VITE_APP_SENTRY_DSN,
     integrations: [
@@ -31,7 +32,7 @@ if (import.meta.env.PROD) {
     replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
     replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
   });
-}
+// }
 
 Config.init()
 .then(()=>{
