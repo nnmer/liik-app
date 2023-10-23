@@ -24,6 +24,15 @@ fn main() {
     let system_tray = SystemTray::new().with_menu(system_tray_menu);
 
     tauri::Builder::default()
+        .setup(|app| {
+          // #[cfg(debug_assertions)] // only include this code on debug builds
+          {
+            let window = app.get_window("main").unwrap();
+            window.open_devtools();
+            window.close_devtools();
+          }
+          Ok(())
+        })
         .plugin(tauri_plugin_single_instance::init(|app, argv, cwd| {
             println!("{}, {argv:?}, {cwd}", app.package_info().name);
             app.emit_all("single-instance", Payload { args: argv, cwd }).unwrap();

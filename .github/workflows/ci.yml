@@ -12,10 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-11, ubuntu-20.04, windows-2019]
-        include:
-          - arch: aarch64
-            distro: macos-11
+        platform: [macos-11, ubuntu-20.04]
     runs-on: ${{ matrix.platform }}
 
     steps:
@@ -39,8 +36,8 @@ jobs:
           VITE_APP_SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_UPDATER_KEY }}
         with:
-          tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
-          releaseName: 'v__VERSION__'
+          tagName: v__VERSION__-debug-build # the action automatically replaces \_\_VERSION\_\_ with the app version
+          releaseName: 'v__VERSION__-debug-build'
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: true
           prerelease: false
