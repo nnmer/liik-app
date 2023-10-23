@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-11, ubuntu-20.04]
+        platform: [macos-11]
     runs-on: ${{ matrix.platform }}
 
     steps:
@@ -41,3 +41,4 @@ jobs:
           releaseBody: 'See the assets to download this version and install.'
           releaseDraft: true
           prerelease: false
+          includeDebug: true
