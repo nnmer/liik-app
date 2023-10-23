@@ -1,5 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import 'core-js/actual/object/assign'
+import 'core-js/actual/object/freeze'
+import 'core-js/actual/object/entries'
+import 'core-js/actual/object/has-own'
+
 import App from "./App";
 
 import '@mantine/core/styles.css';
